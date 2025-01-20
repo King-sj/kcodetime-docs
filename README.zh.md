@@ -6,3 +6,5 @@
 kcodetime 是用于统计用户编码状态的vscode插件（主要用于统计编码时间）。
 
 此项目用于同步项目的整体架构设计文档。
+
+[架构设计](docs/architecture.zh.md)
