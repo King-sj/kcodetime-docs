@@ -1,2 +1,7 @@
 # kcodetime-docs
-This repository serves as the comprehensive documentation hub for the kcodetime project.
+
+- [中文](README.zh.md)
+- [english](README.md)
+
+please move to [中文](README.zh.md)
+<!-- TODO: 添加英文版本文档 -->
