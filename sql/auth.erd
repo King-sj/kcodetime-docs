@@ -5,7 +5,7 @@
     "width": 2000,
     "height": 2000,
     "scrollTop": -1,
-    "scrollLeft": -127,
+    "scrollLeft": -105,
     "zoomLevel": 1,
     "show": 431,
     "database": 4,
@@ -64,15 +64,15 @@
           "JSLFtHFU4fJN77tTwcaHu"
         ],
         "ui": {
-          "x": 190,
-          "y": 80,
+          "x": 288,
+          "y": 69,
           "zIndex": 2,
           "widthName": 60,
           "widthComment": 60,
           "color": ""
         },
         "meta": {
-          "updateAt": 1740825532898,
+          "updateAt": 1740981080596,
           "createAt": 1740825530820
         }
       }

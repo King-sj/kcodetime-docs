@@ -2,6 +2,10 @@
 
 # server 设计
 
+## 数据库设计
+
+![alt text](../sql/code_state.png)
+
 ## 请求规范
 
 需要鉴权的 API 务必在请求头中附带 token 信息。 格式如下:
@@ -24,7 +28,9 @@ Authorization: <认证方案> <凭证信息>
   "err-code": "code number"
 }
 ```
+
 ## Auth System
+
 ### 获取注册验证码
 
 **POST**: `/api/v1/auth/captcha`
@@ -219,6 +225,8 @@ graph TD
 
 ## Code Activity System
 
+### 更新编码状态
+
 **POST**: `/api/v1/auth/activities`
 
 **请求头**:
@@ -228,6 +236,7 @@ Authorization: Customize <token>
 ```
 
 **参数**:
+
 ```json
 {
   "activities":[
@@ -266,7 +275,24 @@ Authorization: Customize <token>
   ]
 }
 ```
-### 使用redis辅助去重
+
+**返回值**
+
+```json
+{
+  "res":{
+    "suc_ids":["id"] // 返回成功的id
+  },
+  // ...
+}
+```
+
+#### 去重
+
+使用redis辅助去重
+
 ```
 REDIS_DUP_KEY = "activity:dedup:{activity_id}"
 ```
+
+### 获取统计信息

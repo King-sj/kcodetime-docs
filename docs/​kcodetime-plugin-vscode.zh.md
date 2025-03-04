@@ -4,13 +4,11 @@
 
 ```mermaid
 graph TD
-  A[upload_code_activity] --> B{网络可用?}
-  B -->|是| C[直接尝试上传]
-  B -->|否| D[写入本地SQLite<br/>状态: pending]
+  A[upload_code_activity] --> C[直接尝试上传]
   C --> E{上传成功?}
   E -->|是| F[删除本地数据]
   E -->|否| G[写入本地SQLite<br/>状态: pending]
-  D --> H[定时检查网络]
+  G --> H[定时检查网络]
   H --> I[批量获取pending数据<br/>状态: uploading]
   I --> J[分页上传到服务器]
   J --> K{上传成功?}
