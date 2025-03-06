@@ -268,7 +268,7 @@ Authorization: Customize <token>
     },
     "ide":{
       "name": "string",
-      "ide_version": "string"
+      "version": "string"
     },
     "version":"string"
   }

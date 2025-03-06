@@ -56,7 +56,7 @@ kcodetime 是用于统计用户编码状态的vscode插件（主要用于统计�
   },
   "ide":{
     "name": "string",
-    "ide_version": "string"
+    "version": "string"
   },
   "version":"string"
 }
