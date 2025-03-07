@@ -1,6 +1,4 @@
 - 使用列式数据库（clickHouse、...）
 - 使用消息队列解耦(RabbitMQ、Kafka、...)， 实现高并发、高可用
-- 使用心跳机制(heartbeat)
-- 使用Redis?
-- 考虑断网、弱网状态
 - 实现限流
+- 考虑将获取CodeActivity的统计信息的接口整合

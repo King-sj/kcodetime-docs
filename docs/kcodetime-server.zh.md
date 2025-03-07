@@ -227,7 +227,7 @@ graph TD
 
 ### 更新编码状态
 
-**POST**: `/api/v1/auth/activities`
+**POST**: `/api/v1/code_activity/activity`
 
 **请求头**:
 
@@ -239,7 +239,7 @@ Authorization: Customize <token>
 
 ```json
 {
-  "activities":[
+  "activity":
   {
     "id" : "uuid",
     "start_time_stamp": "int",
@@ -272,7 +272,6 @@ Authorization: Customize <token>
     },
     "version":"string"
   }
-  ]
 }
 ```
 
@@ -280,9 +279,7 @@ Authorization: Customize <token>
 
 ```json
 {
-  "res":{
-    "suc_ids":["id"] // 返回成功的id
-  },
+  "res":"id" // 返回成功的id
   // ...
 }
 ```
@@ -296,3 +293,162 @@ REDIS_DUP_KEY = "activity:dedup:{activity_id}"
 ```
 
 ### 获取统计信息
+#### 获取项目最早记录时间
+
+**GET**: `/api/v1/code_activity/statistics/project/earliest
+
+**请求头**:`Authorization: Customize <token>`
+
+**return**:
+```json
+{
+  "res": "yyyy-mm-dd",
+  "err-msg": "",
+  "err-code": ""
+}
+```
+
+#### 获取项目时间
+
+**GET**:`/api/v1/code_activity/statistics/project/time`
+
+**TOKEN**: `Authorization: Customize <token>`
+
+**params**:
+```
+{
+  "date_from": "yyyy-mm-dd",
+  "date_to": "yyyy-mm-dd"
+}
+```
+
+**return**:
+```json
+{
+  "res": [
+    {
+      "date": "yyyy-mm-dd",
+      "projects":[
+        {
+          "project_name": "string",
+          "duration": "int"
+        }
+      ]
+    }
+  ],
+  "err-msg": "",
+  "err-code": ""
+}
+```
+
+#### 获取code/debug/terminal时间
+
+**GET**: `/api/v1/code_activity/statistics/time`
+
+**HEADERS**: `Authorization: Customize <token>`
+
+**params**:
+```
+{
+  "date_from": "yyyy-mm-dd",
+  "date_to": "yyyy-mm-dd"
+}
+```
+
+**return**:
+```json
+{
+  "res": [
+    {
+      "date": "yyyy-mm-dd",
+      "debug_duration": "int",
+      "code_duration": "int",
+      "terminal_duration": "int"
+    }
+  ],
+  "err-msg": "",
+  "err-code": ""
+}
+```
+#### 获取某天的详细信息 【暂不支持】
+
+#### 获取IDE信息
+**GET**:`/api/v1/code_activity/statistics/ide`
+
+**HEADERS**:`Authorization: Customize <token>`
+
+**params**:
+```
+{
+  "date_from": "yyyy-mm-dd",
+  "date_to": "yyyy-mm-dd"
+}
+```
+
+**return**:
+```json
+{
+  "res": [
+    {
+      "ide": "string",
+      "duration": "int"
+    }
+  ],
+  "err-msg": "",
+  "err-code": ""
+}
+```
+#### 获取Language信息
+**GET**:`/api/v1/code_activity/statistics/language`
+
+**HEADERS**:`Authorization: Customize <token>`
+
+**params**:
+```
+{
+  "date_from": "yyyy-mm-dd",
+  "date_to": "yyyy-mm-dd"
+}
+```
+
+**return**:
+```json
+{
+  "res": [
+    {
+      "language": "string",
+      "duration": "int",
+      "char_deleted": "int",
+      "char_added": "int"
+    }
+  ],
+  "err-msg": "",
+  "err-code": ""
+}
+```
+#### 获取OS信息
+**GET**:`/api/v1/code_activity/statistics/os`
+
+**HEADERS**:`Authorization: Customize <token>`
+
+**params**:
+```
+{
+  "date_from": "yyyy-mm-dd",
+  "date_to": "yyyy-mm-dd"
+}
+```
+
+return:
+```json
+{
+  "res": [
+    {
+      "os": "string",
+      "duration": "int"
+    }
+  ],
+  "err-msg": "",
+  "err-code": ""
+}
+```
